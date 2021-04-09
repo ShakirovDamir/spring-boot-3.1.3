@@ -1,5 +1,9 @@
 package com.shakirov.springboot313.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.Entity;
@@ -9,6 +13,10 @@ import javax.persistence.Transient;
 import java.util.Set;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Role implements GrantedAuthority {
     @Id
     private Long id;
@@ -18,32 +26,7 @@ public class Role implements GrantedAuthority {
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
 
-    public Role() {}
-
-    public Role(String roleName) {
-        if (roleName.contains("ADMIN")) {
-            this.id = 1L;
-        } else if (roleName.contains("USER")) {
-            this.id = 2L;
-        }
-        this.roleName = roleName;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getRoleName() {
-        return roleName;
-    }
-
-    public void setRoleName(String role) {
-        this.roleName = role;
-    }
+    public Role(String name){this.roleName = name;}
 
     @Override
     public String getAuthority() {

@@ -1,6 +1,9 @@
 package com.shakirov.springboot313.model;
 
-import lombok.Data;
+import com.shakirov.springboot313.dto.UserDto;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -8,7 +11,9 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
-@Data
+@Setter
+@Getter
+@NoArgsConstructor
 @Entity
 public class User implements UserDetails {
     @Id
@@ -18,53 +23,20 @@ public class User implements UserDetails {
     private String name, lastName, email, password;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>();;
 
-    public User() {}
-
-    public void setRoles(String roles) {
-        this.roles = new HashSet<>();
-        if (roles.contains("ADMIN")) {
-            this.roles.add(new Role("ADMIN"));
-        }
-        if (roles.contains("USER")) {
-            this.roles.add(new Role("USER"));
-        }
-    }
-
-    @Override
-    public String toString() {
-        String rolesString = "";
-        for (Role role: this.roles) {
-            rolesString += role.getRoleName();
-        }
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", roles=" + rolesString +
-                '}';
-    }
-
-    public User(String name, String lastName, int age, String email, String password) {
-        this.name = name;
-        this.lastName = lastName;
-        this.age = age;
-        this.email = email;
-        this.password = password;
-    }
-
-    public User(String name, String lastName, int age, String email, String password, Set<Role> roles) {
-        this(name, lastName, age, email, password);
-        this.roles = roles;
+    public User(UserDto userDto){
+        this.id = userDto.getId();
+        this.age = userDto.getAge();
+        this.name = userDto.getName();
+        this.lastName = userDto.getLastName();
+        this.email = userDto.getEmail();
+        this.password = userDto.getPassword();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles;
+        return getRoles();
     }
 
     @Override
@@ -92,3 +64,4 @@ public class User implements UserDetails {
         return true;
     }
 }
+

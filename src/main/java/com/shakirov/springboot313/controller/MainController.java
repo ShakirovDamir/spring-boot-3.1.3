@@ -20,14 +20,7 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String getAdminPage(Model model) {
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("authorizedUser", userDetails);
-        model.addAttribute("newUser", new User());
-        model.addAttribute("users", userService.getAllUsers());
-        model.addAttribute("allRoles", roleService.getAllRoles());
-        return "admin";
-    }
+    public String getAdminPage() { return "admin"; }
 
     @GetMapping("/login")
     public String login() {

@@ -1,14 +1,20 @@
 package com.shakirov.springboot313.controller;
 
+import com.shakirov.springboot313.dto.RoleDto;
+import com.shakirov.springboot313.dto.UserDto;
 import com.shakirov.springboot313.model.Role;
 import com.shakirov.springboot313.model.User;
 import com.shakirov.springboot313.service.RoleService;
 import com.shakirov.springboot313.service.UserService;
+import lombok.SneakyThrows;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 public class RestAdminController {
@@ -51,17 +57,30 @@ public class RestAdminController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @SneakyThrows
     @PostMapping("/create")
-    public ResponseEntity<?> createUser(@RequestBody User user) {
+    public ResponseEntity<User>createUser(@RequestBody UserDto userDto){
+        User user = new User(userDto);
+        Set<Role> roles = new HashSet<>();
+        for(String role : userDto.getRoles()){
+            roles.add(roleService.getByName(role));
+        }
+        user.setRoles(roles);
         userService.createUser(user);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @SneakyThrows
     @PutMapping("/update")
-    public ResponseEntity<User> updateUser(@RequestBody User user) {
+    public ResponseEntity<User> updateUser(@RequestBody UserDto userDto) {
+        User user = new User(userDto);
+        Set<Role> roles = new HashSet<>();
+        for (String role : userDto.getRoles()) {
+            roles.add(roleService.getByName(role));
+        }
+        user.setRoles(roles);
         userService.updateUser(user);
-        return ResponseEntity.ok()
-                .body(user);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

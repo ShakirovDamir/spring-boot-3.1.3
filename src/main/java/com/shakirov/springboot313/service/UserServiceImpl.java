@@ -31,22 +31,14 @@ public class UserServiceImpl implements UserService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException { return userRepository.findByEmail(email); }
 
     @Override
-    public Iterable<User> getAllUsers() {
-        return userRepository.findAll();
-    }
+    public Iterable<User> getAllUsers() { return userRepository.findAll(); }
 
     @Override
-    public void deleteUser(User user) {
-        userRepository.delete(user);
-    }
+    public void deleteUser(User user) { userRepository.delete(user); }
 
     @Override
-    public Optional<User> getUserById(Long id) {
-        return userRepository.findById(id);
-    }
+    public Optional<User> getUserById(Long id) { return userRepository.findById(id); }
 
     @Override
-    public void deleteUserById(Long id) {
-        userRepository.deleteById(id);
-    }
+    public void deleteUserById(Long id) { userRepository.deleteById(id); }
 }

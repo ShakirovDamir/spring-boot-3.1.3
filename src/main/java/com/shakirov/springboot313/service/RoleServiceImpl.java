@@ -2,7 +2,7 @@ package com.shakirov.springboot313.service;
 
 import com.shakirov.springboot313.model.Role;
 import com.shakirov.springboot313.repo.RoleRepository;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import javassist.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -27,4 +27,14 @@ public class RoleServiceImpl implements RoleService {
         iterable.forEach(role -> set.add(role));
         return set;
     }
+
+    @Override
+    public Role getByName(String name) throws NotFoundException {
+        Role role = roleRepository.findByRoleName(name);
+        if (role == null) {
+            throw new NotFoundException(name);
+        }
+        return role;
+    }
+
 }
