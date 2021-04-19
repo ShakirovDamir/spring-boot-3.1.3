@@ -72,8 +72,8 @@ function getModalEdit(id) {
                 '                        <label>Role</label>\n' +
                 '                        <select id="editRoles" multiple size="2" required \n' +
                 '                               class="form-control form-control-sm">\n' +
-                '                            <option value="ADMIN"' + adminSelect + '>ADMIN</option>\n' +
-                '                            <option value="USER"' + userSelect + '>USER</option>\n' +
+                // '                            <option value="ADMIN"' + adminSelect + '>ADMIN</option>\n' +
+                // '                            <option value="USER"' + userSelect + '>USER</option>\n' +
                 '                        </select>\n' +
                 '                    </p>' +
                 '                </form>\n' +

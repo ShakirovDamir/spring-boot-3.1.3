@@ -86,11 +86,13 @@
                                     <input class="form-control form-control-sm" type="password"
                                            id="newPassword" placeholder="Password" required>
                                 <p>
-                                    <label>Role</label>
-                                    <select id="newRoles" class="form-control form-control-sm" multiple size="2" required>
-                                        <option value="USER" label="USER" ></option>
-                                        <option value="ADMIN" label="ADMIN"></option>
-                                    </select>
+
+                                <label for="newRoles">Roles</label>
+                                <select multiple size="2" class="form-control" id="newRoles">
+<!--                                    <option value = "USER" label = "USER"></option>-->
+<!--                                    <option value = "ADMIN" label = "ADMIN"></option>-->
+                                </select>
+
                                 </p>
                             </form>
                             <button onclick="createUser()" class="btn btn-success">Add new user</button>

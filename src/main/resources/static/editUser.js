@@ -24,7 +24,7 @@ function editUser() {
     })
         .then(response => response.json())
         .then(user => {
-            showAllUsers();
+           showAllUsers();
         });
 }
 

@@ -1,6 +1,5 @@
 package com.shakirov.springboot313.controller;
 
-import com.shakirov.springboot313.dto.RoleDto;
 import com.shakirov.springboot313.dto.UserDto;
 import com.shakirov.springboot313.model.Role;
 import com.shakirov.springboot313.model.User;

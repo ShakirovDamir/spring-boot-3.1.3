@@ -49,9 +49,9 @@ function getModalDelete(id) {
                 '                    </p>\n' +
                 '                    <p>\n' +
                 '                        <label>Role</label>\n' +
-                '                        <select class="form-control form-control-sm" multiple size="2" readonly>\n' +
-                '                            <option>ADMIN</option>\n' +
-                '                            <option>USER</option>\n' +
+                '                        <select id = "deleteRoles" class="form-control form-control-sm" multiple size="2" readonly>\n' +
+                // '                            <option>ADMIN</option>\n' +
+                // '                            <option>USER</option>\n' +
                 '                        </select>\n' +
                 '                    </p>' +
                 '                </form>\n' +

@@ -1,4 +1,6 @@
 showAllUsers();
+showAllRoles();
+
 
 function showAllUsers(){
     let tBody = document.getElementById("tBody");
@@ -36,3 +38,18 @@ function showAllUsers(){
             })
         });
 }
+
+function showAllRoles(){
+    let selectCreate = document.getElementById("newRoles");
+    let selectEdit = document.getElementById("editRoles");
+    let selectDelete = document.getElementById("deleteRoles");
+    fetch('http://localhost:8080/getAllRoles')
+        .then(response => response.json())
+        .then(roles => {
+            roles.forEach(function (role) {
+
+
+            })
+        });
+}
+
