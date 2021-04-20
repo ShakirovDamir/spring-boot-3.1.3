@@ -7,7 +7,7 @@ import java.util.Set;
 
 public interface RoleService {
     void createRoles(Set<Role> roles);
-    Set<Role> getAllRoles();
+    Set<String> getAllRoles();
 
     Role getByName(String name) throws NotFoundException;
 }

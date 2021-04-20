@@ -39,7 +39,7 @@ public class RestAdminController {
     }
 
     @GetMapping("/getAllRoles")
-    public ResponseEntity<Iterable<Role>> getAllRoles() {
+    public ResponseEntity<Iterable<String>> getAllRoles() {
         return ResponseEntity.ok()
                 .body(roleService.getAllRoles());
     }

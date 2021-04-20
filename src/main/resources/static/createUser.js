@@ -30,7 +30,8 @@ function createUser() {
             window.formNewUser.newPassword.value = "";
             window.formNewUser.newRoles.value = "";
 
-           // showAllUsers();
+            showAllUsers();
+            showAllRoles();
             window.location.href = "/"
         });
 }

@@ -6,5 +6,6 @@ function deleteUser(id) {
     })
         .then(response => {
           showAllUsers();
+          showAllRoles();
         });
 }

@@ -21,10 +21,10 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Set<Role> getAllRoles() {
+    public Set<String> getAllRoles() {
         Iterable<Role>  iterable = roleRepository.findAll();
-        Set<Role> set = new HashSet<>();
-        iterable.forEach(role -> set.add(role));
+        Set<String> set = new HashSet<>();
+        iterable.forEach(role -> set.add(role.getAuthority()));
         return set;
     }
 

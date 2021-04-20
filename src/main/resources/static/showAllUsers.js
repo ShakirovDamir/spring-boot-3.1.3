@@ -47,8 +47,20 @@ function showAllRoles(){
         .then(response => response.json())
         .then(roles => {
             roles.forEach(function (role) {
+                let option = document.createElement("option");
+                option.text = role;
+                selectCreate.add(option);
 
+                let option1 = document.createElement("option");
+                option1.text = role;
+                selectEdit.add(option1);
 
+                let option2 = document.createElement("option");
+                option2.text = role;
+                selectDelete.add(option2);
+
+                //selectEdit.add(option);
+                //selectDelete.add(option);
             })
         });
 }
