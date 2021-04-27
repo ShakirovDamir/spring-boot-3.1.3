@@ -67,6 +67,15 @@ function getModalDelete(id) {
                 '</div>';
 
             $("#modalDelete").modal();
-
+            let selectDelete = document.getElementById("deleteRoles");
+            fetch('http://localhost:8080/getAllRoles')
+                .then(response => response.json())
+                .then(roles => {
+                    roles.forEach(function (role) {
+                        let option = document.createElement("option");
+                        option.text = role;
+                        selectDelete.add(option);
+                    })
+                });
         });
 }

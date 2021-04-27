@@ -22,8 +22,7 @@ function editUser() {
         body: JSON.stringify(user),
 
     })
-        .then(response => response.json())
-        .then(user => {
+        .then(() => {
             showAllUsers();
             showAllRoles();
         });

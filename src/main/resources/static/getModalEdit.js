@@ -89,7 +89,16 @@ function getModalEdit(id) {
                 '</div>';
 
             $("#modalEdit").modal();
-
+            let selectEdit = document.getElementById("editRoles");
+            fetch('http://localhost:8080/getAllRoles')
+                .then(response => response.json())
+                .then(roles => {
+                    roles.forEach(function (role) {
+                        let option = document.createElement("option");
+                        option.text = role;
+                        selectEdit.add(option);
+                    })
+                });
         });
 }
 

@@ -1,7 +1,6 @@
 showAllUsers();
 showAllRoles();
 
-
 function showAllUsers(){
     let tBody = document.getElementById("tBody");
     tBody.innerHTML = "";
@@ -38,11 +37,8 @@ function showAllUsers(){
             })
         });
 }
-
 function showAllRoles(){
     let selectCreate = document.getElementById("newRoles");
-    let selectEdit = document.getElementById("editRoles");
-    let selectDelete = document.getElementById("deleteRoles");
     fetch('http://localhost:8080/getAllRoles')
         .then(response => response.json())
         .then(roles => {
@@ -50,17 +46,6 @@ function showAllRoles(){
                 let option = document.createElement("option");
                 option.text = role;
                 selectCreate.add(option);
-
-                let option1 = document.createElement("option");
-                option1.text = role;
-                selectEdit.add(option1);
-
-                let option2 = document.createElement("option");
-                option2.text = role;
-                selectDelete.add(option2);
-
-                //selectEdit.add(option);
-                //selectDelete.add(option);
             })
         });
 }
